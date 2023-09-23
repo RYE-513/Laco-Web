@@ -1,0 +1,255 @@
+[installation]
+ - First install the GULP dependenciefa-spin
+
+ - npm install gulp gulp-sass sass --save-dev 
+
+ (Run that code in your terminal then your Good to go in depencies)
+
+ - Now create a js file named [gulpfile.js] and proceed to add this code 
+
+[
+        const { src, dest, watch, series } = require('gulp');
+        const sass = require('gulp-sass')(require('sass'))
+
+        const buildStyles = () => {
+            return src ('index.scss')
+                .pipe(sass())
+                .pipe(dest('css'))
+        }
+
+ 
+        const watchTask = () => {
+            watch(['index.scss'], buildStyles)
+        }
+
+
+
+        exports.default = series(buildStyles, watchTask)
+]
+
+
+[EXPLANATION OF THE CODE BELOW]
+
+So, imagine you have a magic robot friend named Gulp. Gulp is really good at helping you with your special drawing project where you make colorful pictures. But Gulp doesn't draw pictures, it helps with making your pictures look extra nice on the computer.
+
+Now, let's look at the special instructions you gave to Gulp:
+
+1. You told Gulp that you need some special tools to help you. These tools are like your favorite crayons and markers for drawing.
+
+- The first tool is called "src." It helps Gulp find the main drawing you want to work on. Imagine it's like picking the paper you want to draw on.
+
+- The second tool is "dest." This helps Gulp put your finished drawing in a special folder where everyone can see it. It's like Gulp knows where to hang your picture when it's done.
+
+- The third tool is "watch." This one is like a robot friend that keeps an eye on your drawing. If you make any changes to your drawing, this friend will tell Gulp to update everything automatically.
+
+- The last tool is "series." This tool helps Gulp know the order of things. It tells Gulp that first, you want to use the "buildStyles" tool, and after that, you want to use the "watchTask" tool.
+
+2. Then, you introduced Gulp to a special friend named "sass." Sass is like a magical color mixer for your drawings. It helps you make your pictures colorful and pretty.
+
+3. You created a plan for Gulp to follow:
+
+You made a plan called "buildStyles." In this plan, you told Gulp to take your main drawing called "index.scss," use the magical "sass" tool to add beautiful colors, and then put the colorful drawing in a folder called "css."
+
+You also made a plan named "watchTask." In this plan, you told Gulp to keep an eye on your "index.scss" drawing. If you change anything in that drawing, Gulp will use the "buildStyles" plan to make it colorful again.
+
+Finally, you told Gulp what to do when you want to start working:
+
+You said, "Gulp, when I'm ready to draw, please follow these steps: First, use the 'buildStyles' plan to make my drawing colorful. Then, use the 'watchTask' plan to watch for any changes while I draw."
+So, every time you want to work on your special drawing project, you just tell Gulp to follow these steps, and it will make sure your pictures look amazing on the computer, just the way you want them to!
+
+
+
+
+[PURPOSE OF MAKING VARIABLES FOR SASS]
+ - its like building global variables for example you need a color you can just CREATE variable and assign 
+   the value inside the varaible.
+
+[CREATING VARIABLES IN SASS]
+ - You can create varaible in sass by adding dollar sign ($)
+
+    [EXAMPLE]
+        - For example you want to create a theme color thing u can add it into a variable
+            - $primary: #326dee; 
+
+            [ $ - this sign is use to call the variable]
+            [primary - is the name of the variable]
+            [#326dee - is the data inside the variable which is a RGB values.]
+
+[PARTIALS AND IMPORTS]
+ - To keep the code much cleaner, we need to use partials and imports!
+
+[WE USE IMPORTING METHOD]
+ - We seperates our variables in seperate files so our sass file looks more cleaner
+
+    [CHANGES IN GULP FILE]
+        - We need to change the gulp.js so it can accept any scss file extension and compile it into css format
+    
+        [CODE CHANGES IN GULP FILE]
+            [
+                    const { src, dest, watch, series } = require('gulp');
+                    const sass = require('gulp-sass')(require('sass'))
+
+                    const buildStyles = () => {
+                        return src ('*.scss')
+                        .pipe(sass())
+                        .pipe(dest('css'))
+                }
+
+                const watchTask = () => {
+                    watch(['*.scss'], buildStyles)
+                }
+
+                exports.default = series(buildStyles, watchTask)
+            ]
+
+                [CHANGES]
+                    - We change the src from gulp CLI from index.scss to *.scss so any scss files will get compiled
+                        we also change the watch() so it can easily identify any sass files inside the directory.
+
+    [_VIRAIABLES.SCSS (CHANGES)]
+        - We rename the virables.scss to _vaaribles.scss because we dont want it to be compiled by scss
+        because it might cause some lags on our server.
+
+
+[PROJECT STRUCTURE (BULDING MY OWN CSS LIBRARY USING SASS)]
+ - We will bre creating our own CSS library
+
+    [STEP 1]
+        - We organize our codes by adding all of the files in one folder
+        [STEP 2]
+            - Now change the gulp file directory into the folder that you created!
+            [STEP 3]
+                - Now we import all of the created files into one SCSS file.
+
+[USING MATH IN SASS] 
+ - We can use math logics inside a scss file cool riGHT?
+
+[How to use Math?] 
+
+    [STEP 1]
+        - we import/use the math package builtin inside sass library
+        [STEP 2]
+            - We can simply import it by using @use function then add (sass) follow by a colon then call the package name which is math like this:
+            [@use 'sass:math']    
+            - You also need to add semi quatation marks specify the package name,.
+
+
+[Example of using math package in SASS]
+
+[
+
+@use 'sass:math';    ------ > (we import the package here at the start, in this case we use math as the package)
+
+.card{
+    display: block;
+    padding: $base-padding;
+    border: $base-border-thickness solid #ddd;
+    box-shadow: $base-box-shadow;
+    border-radius: math.div($base-border-radius, 4);  ------ > (now to implement it first we need to call the math function then what operator we want to use then the variable name you want to modify and the value you wanted to implement.)
+
+    .card-tile {
+        font-size: $font-size-xxl;
+        padding-bottom: $base-padding;
+        font-weight: bold;
+    }
+
+    .card-body {
+        font-size: $base-font-size;
+        
+
+        a {
+            text-decoration: underline;
+        }
+    }
+
+}
+
+]
+
+
+[We can also use some CLI kind of things like debugging]
+
+ - We use the function @debug()
+    [Procedure]
+        - @debug "Hello World";
+        [OUTPUT]
+
+        LEILA\_card.scss:27 Debug: Hello, World
+        [20:07:02] Finished 'buildStyles' after 18 ms
+
+        - it will output something like that!
+
+
+[EXAMPLES]    
+
+[
+
+@debug "Hello, World";
+//div() means division
+@debug math.div(10,3);
+
+//floor() means round dowm
+@debug math.floor(2.6);
+
+//Max() will finds the maximum value in the array
+@debug math.max(1px, 20px, 30px);
+
+
+//[outputs]
+
+//LEILA\_card.scss:27 Debug: Hello, World
+//LEILA\_card.scss:29 Debug: 3.3333333333
+//LEILA\_card.scss:32 Debug: 2
+//LEILA\_card.scss:35 Debug: 30px   
+
+]
+
+[Maps]
+- Maps in Sass hold pairs of keys and values, and make it easy to look up a value by its corresponding key. They’re written (<expression>: <expression>, <expression>: <expression>). The expression before the : is the key, and the expression after is the value associated with that key. The keys must be unique, but the values may be duplicated. Unlike lists, maps must be written with parentheses around them. A map with no pairs is written ().
+
+[EXAMPLES]
+
+ - we can interact with our maps using the following functions.
+
+[
+//map-get() is use to get the specific value from the map element
+@debug map-get($colors, "purple");
+
+//map-has-key() is used to check if the map element contains the specified value.
+@debug map-has-key($colors, "purple");
+
+//map-remove() is used to remove the map element from the map
+@debug map-remove($colors, "primary");
+
+//map-merge() is use to merge another value with the current map element
+@debug map-merge($colors, ("pink": #ffc0cb));
+]
+
+
+[BROO IT GOT SOME LOOPS :O (SASS LOOPS)]
+
+    - We have here a classic loop which is for loop 
+
+        @for $item from 1 through 9 {
+        .text-#{$key}-light-#{$item} {
+            color: mix(white, $val, $item * 10);
+        }
+        .text-#{$key}-light-#{$item} {
+            background-color: mix(white, $val, $item * 10);
+        }
+    }
+    
+    @for $item from 1 through 9 {
+        .text-#{$key}-dark-#{$item} {
+            color: mix(black, $val, $item * 10);
+        }
+        .text-#{$key}-dark-#{$item} {
+            background-color: mix(black, $val, $item * 10);
+        }
+    }
+
+        - for every item in the map we eterate it from 1 through 9 and mix the colors to white and black
+
+
+[LEARNING FLEXBOXES]
+

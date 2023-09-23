@@ -1,0 +1,340 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+}
+
+section {
+  padding: 5rem 10%;
+}
+
+html {
+  font-size: 70%;
+}
+html::-webkit-scrollbar {
+  width: 0.5rem;
+}
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+html::-webkit-scrollbar-thumb {
+  background: #2685BF;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 1rem 3rem;
+  font-size: 1.8rem;
+  border: 0.1rem solid #3FCEF6;
+  border-radius: 1rem;
+  background-color: #3FCEF6;
+  color: #0D0D0D;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+.btn:hover {
+  background-color: #2685BF;
+  color: #EFF1F3;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #2685BF;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 10%;
+  display: flex !important;
+  align-items: center;
+  z-index: 1000;
+}
+.header .main-logo {
+  margin-right: auto;
+}
+.header .main-logo img {
+  width: 20rem;
+  max-width: 100%;
+}
+.header .navbar {
+  position: relative;
+}
+.header .navbar #close-navbar {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-size: 4rem;
+  cursor: pointer;
+  color: #0D0D0D;
+  display: none;
+}
+.header .navbar #close-navbar:hover {
+  transform: rotate(90deg);
+}
+.header .navbar a {
+  margin-right: 1rem;
+  font-size: 1.7rem;
+  text-transform: capitalize;
+  color: #0D0D0D;
+  color: #EFF1F3;
+}
+.header .navbar a:hover {
+  color: #385a9a;
+}
+.header .icons div {
+  cursor: pointer;
+  font-size: 2.5rem;
+  color: #EFF1F3;
+}
+.header .icons div:hover {
+  color: #385a9a;
+}
+.header #menu-btn {
+  display: none;
+}
+
+.account-form {
+  position: fixed;
+  top: 0;
+  right: -105%;
+  width: 35rem;
+  background: #EFF1F3;
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
+  justify-content: center;
+  height: 100%;
+  z-index: 1200;
+  padding: 2rem;
+  text-align: center;
+}
+.account-form.active {
+  right: 0;
+  box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.8);
+}
+.account-form #close-form {
+  position: absolute;
+  top: 1.5rem;
+  right: 2.5rem;
+  font-size: 4rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: #0D0D0D;
+}
+.account-form #close-form:hover {
+  transform: rotate(90deg);
+}
+.account-form form {
+  border: 0.1rem solid #3FCEF6;
+  padding: 2rem;
+  display: none;
+}
+.account-form form.active {
+  display: block;
+}
+.account-form form h3 {
+  font-size: 3rem;
+  text-transform: capitalize;
+  color: #0D0D0D;
+  padding-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+.account-form form .box {
+  width: 100%;
+  padding: 1.2rem 1.4rem;
+  border: 0.1rem solid #3FCEF6;
+  font-size: 1.6rem;
+  margin: 0.7rem 0;
+}
+.account-form form .flex {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.account-form form .flex label {
+  font-size: 1.2rem;
+  color: #0D0D0D;
+  cursor: pointer;
+}
+.account-form form .flex a {
+  font-size: 1.2rem;
+  color: #0D0D0D;
+  margin-left: auto;
+}
+.account-form form .flex a:hover {
+  text-decoration: underline;
+  color: #2685BF;
+}
+.account-form form .btn {
+  width: 100%;
+}
+.account-form .buttons .btn {
+  margin: 0 0.5rem;
+}
+.account-form .buttons .btn.active {
+  background: #2685BF;
+  color: #0D0D0D;
+}
+
+.home {
+  padding: 0;
+}
+.home .slide {
+  display: flex;
+  align-items: center;
+  height: 60rem;
+  background-size: cover !important;
+  background-position: center !important;
+}
+.home .slide .content {
+  width: 60rem;
+}
+.home .slide .content h3 {
+  font-size: 5rem;
+  text-transform: capitalize;
+  color: #0D0D0D;
+  color: #EFF1F3;
+}
+.home .slide .content p {
+  font-size: 1.5rem;
+  line-height: 2;
+  color: #EFF1F3;
+  color: #BFBFBF;
+  padding: 1rem 0;
+}
+
+.footer {
+  background-color: #2685BF;
+}
+.footer .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 2rem;
+}
+.footer .box-container .box h3 {
+  font-size: 2.2rem;
+  text-transform: capitalize;
+  color: #0D0D0D;
+  padding: 1rem 0;
+  color: #EFF1F3;
+}
+.footer .box-container .box h3 i {
+  color: #2685BF;
+}
+.footer .box-container .box .share {
+  margin-top: 1rem;
+}
+.footer .box-container .box .share a {
+  height: 4.5rem;
+  width: 4.5rem;
+  line-height: 4.5rem;
+  font-size: 1.7rem;
+  background-color: #385a9a;
+  color: #EFF1F3;
+  margin-right: 0.3rem;
+  text-align: center;
+}
+.footer .box-container .box .share a:hover {
+  background-color: #404040;
+}
+.footer .box-container .box .link {
+  font-size: 1.5rem;
+  line-height: 2;
+  color: #EFF1F3;
+  padding: 0.5rem 0;
+  display: block;
+}
+.footer .box-container .box .link:hover {
+  color: #385a9a;
+  text-decoration: underline;
+}
+.footer .box-container .box p {
+  font-size: 1.5rem;
+  line-height: 2;
+  color: #EFF1F3;
+  padding: 1rem 0;
+}
+.footer .box-container .box .email {
+  width: 100%;
+  padding: 1.2rem 1.4rem;
+  border: 0.1rem solid #3FCEF6;
+  margin-bottom: 1rem;
+}
+.footer .box-container .box .main-logo-footer img {
+  width: 20rem;
+  max-width: 100%;
+}
+.footer .credit {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 3rem;
+  font-size: 1rem;
+  text-transform: capitalize;
+  color: #0D0D0D;
+  border-top: 0.1rem solid #3FCEF6;
+}
+.footer .credit span {
+  color: #EFF1F3;
+}
+
+@media (max-width: 1200px) {
+  .header {
+    padding: 1rem 5%;
+  }
+  section {
+    padding: 3rem 10%;
+  }
+}
+@media (max-width: 991px) {
+  html {
+    font-size: 60%;
+  }
+  .header {
+    padding: 1rem;
+  }
+  section {
+    padding: 3rem 2rem;
+  }
+}
+@media (max-width: 768px) {
+  .header #menu-btn {
+    display: inline-block;
+  }
+  .header .navbar {
+    position: fixed;
+    top: 0;
+    right: -105%;
+    width: 30rem;
+    background: #EFF1F3;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    z-index: 1200;
+  }
+  .header .navbar #close-navbar {
+    display: block;
+  }
+  .header .navbar.active {
+    box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.8);
+    right: 0;
+  }
+  .header .navbar a {
+    display: block;
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 3rem;
+    color: #0D0D0D;
+  }
+}
